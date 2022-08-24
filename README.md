@@ -1,4 +1,4 @@
-<h3 align="center">Studying to be a mobile app developer</h3>
+<h3 align="center">Front-end Developer</h3>
 
 - I’m currently learning **Dart | Flutter | BLoC State Management**
 
