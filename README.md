@@ -1,6 +1,4 @@
-<h3 align="center">Front-end Developer</h3>
-
-- I’m currently learning **C# | C++ | LUA**
+<h3 align="center">I’m currently learning **C# | C++ | LUA</h3>
 
 </p>
 
