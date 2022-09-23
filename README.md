@@ -1,4 +1,4 @@
-<h1 align="center">Hi I'm Vinícius</h1>
+<h1 align="center">Hi i'm Vinícius</h1>
 <h3 align="center">Front-end Developer focused in Mobile App's</h3>
 
 - I’m currently learning  C++ | LUA
