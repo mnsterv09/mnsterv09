@@ -1,0 +1,33 @@
+[channel]
+name = "Copa2026"
+youtube_playlist_id = ""
+tiktok_hashtags = ["copa2026", "worldcup2026", "futebol", "gol", "fifa"]
+youtube_hashtags = ["#Copa2026", "#WorldCup2026", "#Futebol", "#Gol", "#Shorts"]
+
+[video]
+language = "pt"
+voice = "pt-BR-AntonioNeural"
+aspect = "9:16"
+clip_duration = 3
+count = 1
+
+[subtitles]
+enabled = true
+font = "BebasNeue"
+font_size = 64
+color = "#FFD700"
+stroke_color = "#006400"
+stroke_width = 3
+position = "center"
+
+[audio]
+background_music_volume = 0.15
+
+[topics]
+list = [
+  "Gol incrível do Brasil na Copa do Mundo 2026 estilo anime",
+  "Os melhores gols da fase de grupos Copa 2026 animados",
+  "Gol olímpico na Copa do Mundo 2026 recriado em anime",
+  "Hat-trick histórico na Copa 2026 em animação",
+  "O gol mais bonito da Copa do Mundo 2026 estilo cartoon",
+]

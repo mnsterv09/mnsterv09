@@ -1,0 +1,38 @@
+[channel]
+name = "TrueCrime"
+youtube_playlist_id = ""
+tiktok_hashtags = ["truecrime", "crimesreais", "misterio", "serial", "policia"]
+youtube_hashtags = ["#TrueCrime", "#CrimesReais", "#Mistério", "#Shorts"]
+
+[video]
+language = "pt"
+voice = "pt-BR-AntonioNeural"
+aspect = "9:16"
+clip_duration = 5
+count = 1
+
+[subtitles]
+enabled = true
+font = "Impact"
+font_size = 58
+color = "#FFFFFF"
+stroke_color = "#CC0000"
+stroke_width = 3
+position = "bottom"
+
+[audio]
+background_music_volume = 0.12
+
+[topics]
+list = [
+  "O serial killer que enganou a polícia por 20 anos",
+  "O assassino que enviava cartas para a polícia e nunca foi pego",
+  "A mulher que envenenou 11 pessoas da mesma família sem levantar suspeita",
+  "O crime perfeito que foi resolvido por um erro de 2 segundos",
+  "Ted Bundy: como um homem carismático matou mais de 30 pessoas",
+  "O desaparecimento que a Interpol não consegue explicar até hoje",
+  "O crime que foi transmitido ao vivo na televisão",
+  "A gangue que controlou 12 países ao mesmo tempo por 40 anos",
+  "O assassino que morava ao lado e os vizinhos descreviam como gentil",
+  "O hacker que invadiu a NASA com 16 anos e o que ele encontrou",
+]

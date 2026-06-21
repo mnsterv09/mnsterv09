@@ -1,0 +1,38 @@
+[channel]
+name = "Curiosidades"
+youtube_playlist_id = ""       # preencher após criar no YouTube Studio
+tiktok_hashtags = ["curiosidades", "sabiaque", "fatos", "ciencia", "brasil"]
+youtube_hashtags = ["#Curiosidades", "#SabiaqQue", "#Fatos", "#Shorts"]
+
+[video]
+language = "pt"
+voice = "pt-BR-FranciscaNeural"
+aspect = "9:16"
+clip_duration = 4
+count = 1
+
+[subtitles]
+enabled = true
+font = "BebasNeue"
+font_size = 60
+color = "#FFFFFF"
+stroke_color = "#000000"
+stroke_width = 2
+position = "bottom"
+
+[audio]
+background_music_volume = 0.08
+
+[topics]
+list = [
+  "O animal que pode sobreviver em Marte e existe no Brasil",
+  "7 coisas que seu cérebro faz sem você perceber",
+  "A cidade brasileira que sumiu do mapa e ninguém explica por quê",
+  "Por que você esquece o que ia fazer ao entrar num cômodo",
+  "O rio que pega fogo: o fenômeno real que acontece no Brasil",
+  "O inseto que controla a mente de outros animais e está no Brasil",
+  "7 leis absurdas que ainda existem no Brasil",
+  "O maior cemitério de dinossauros do mundo fica no Brasil",
+  "O efeito Mandela: quando milhões lembram de algo que nunca aconteceu",
+  "O ser humano que ficou mais tempo sem dormir e o que aconteceu",
+]

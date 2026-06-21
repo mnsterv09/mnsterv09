@@ -1,0 +1,11 @@
+.env
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+MoneyPrinterTurbo/
+*.mp4
+*.wav
+*.mp3
+.streamlit/
