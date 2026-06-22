@@ -9,6 +9,11 @@ Uso:
   python run.py analytics [--days 28]
   python run.py dashboard
   python run.py channels
+
+  # Copa 2026 (animação anime/cartoon de gols)
+  python run.py copa goal --team Brasil --opponent Argentina --scorer "Vinícius Júnior" --minute 23
+  python run.py copa goal ... --clips-dir ./meus_clipes   # modo manual (sem API)
+  python run.py copa from-file data/goals.json
 """
 import typer
 from pathlib import Path
@@ -16,6 +21,8 @@ from rich.console import Console
 from rich.table import Table
 
 app = typer.Typer(help="MoneyPrinter Automation — geração e publicação automática de vídeos")
+copa_app = typer.Typer(help="Pipeline de animação de gols da Copa 2026")
+app.add_typer(copa_app, name="copa")
 console = Console()
 
 
@@ -143,6 +150,75 @@ def dashboard():
     import subprocess, sys
     console.print("[cyan]Abrindo dashboard em http://localhost:8501[/cyan]")
     subprocess.run([sys.executable, "-m", "streamlit", "run", "automation/dashboard.py"])
+
+
+# ─────────────────────────────────────────
+# Copa 2026 — animação de gols
+# ─────────────────────────────────────────
+
+@copa_app.command("goal")
+def copa_goal(
+    team: str = typer.Option(..., "--team", help="Seleção que marcou (ex: Brasil)"),
+    opponent: str = typer.Option(..., "--opponent", help="Adversário"),
+    scorer: str = typer.Option(..., "--scorer", help="Nome do jogador"),
+    minute: int = typer.Option(..., "--minute", help="Minuto do gol"),
+    number: int = typer.Option(10, "--number", help="Número da camisa"),
+    play_type: str = typer.Option("chute de fora da área", "--play", help="Tipo de jogada"),
+    stage: str = typer.Option("Fase de Grupos", "--stage", help="Fase da Copa"),
+    score: str = typer.Option("", "--score", help="Placar após o gol (ex: '2 a 1')"),
+    clips_dir: Path = typer.Option(None, "--clips-dir", help="Pasta com clipes manuais (.mp4). Sem isso, gera via IA."),
+    music: Path = typer.Option(None, "--music", help="Trilha de fundo .mp3 (opcional)"),
+    publish: bool = typer.Option(False, "--publish", help="Publicar no YouTube + TikTok ao final"),
+):
+    """Produz a animação de um gol a partir dos dados informados."""
+    from automation.copa.goals import Goal
+    from automation.copa.pipeline import make_goal_video, title_for
+
+    goal = Goal(
+        team=team, opponent=opponent, scorer=scorer, minute=minute,
+        number=number, play_type=play_type, stage=stage, score_after=score,
+    )
+    video = make_goal_video(goal, clips_dir=clips_dir, music=music)
+    if not video:
+        raise typer.Exit(1)
+
+    console.print(f"[bold green]Pronto: {video}[/bold green]")
+
+    if publish:
+        from automation.publish import publish_all
+        results = publish_all(video, title_for(goal), "copa2026")
+        console.print(results)
+
+
+@copa_app.command("from-file")
+def copa_from_file(
+    file: Path = typer.Argument(..., help="JSON com a lista de gols"),
+    clips_root: Path = typer.Option(None, "--clips-root", help="Pasta raiz; cada gol busca clipes em <root>/<slug>"),
+    music: Path = typer.Option(None, "--music", help="Trilha de fundo .mp3 (opcional)"),
+    publish: bool = typer.Option(False, "--publish", help="Publicar cada vídeo ao final"),
+):
+    """Produz vídeos para todos os gols de um arquivo JSON."""
+    from automation.copa.goals import load_goals
+    from automation.copa.pipeline import make_goal_video, title_for
+
+    if not file.exists():
+        console.print(f"[red]Arquivo não encontrado: {file}[/red]")
+        raise typer.Exit(1)
+
+    goals = load_goals(file)
+    console.print(f"[cyan]{len(goals)} gol(is) carregado(s).[/cyan]")
+
+    produced = []
+    for goal in goals:
+        clips_dir = (clips_root / goal.slug) if clips_root else None
+        video = make_goal_video(goal, clips_dir=clips_dir, music=music)
+        if video:
+            produced.append((goal, video))
+            if publish:
+                from automation.publish import publish_all
+                publish_all(video, title_for(goal), "copa2026")
+
+    console.print(f"[bold green]{len(produced)}/{len(goals)} vídeos produzidos.[/bold green]")
 
 
 if __name__ == "__main__":

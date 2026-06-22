@@ -1,0 +1,34 @@
+{
+  "goals": [
+    {
+      "team": "Brasil",
+      "opponent": "Argentina",
+      "scorer": "Vinícius Júnior",
+      "number": 7,
+      "minute": 23,
+      "stage": "Fase de Grupos",
+      "play_type": "drible",
+      "score_after": "1 a 0"
+    },
+    {
+      "team": "França",
+      "opponent": "Inglaterra",
+      "scorer": "Kylian Mbappé",
+      "number": 10,
+      "minute": 67,
+      "stage": "Oitavas de Final",
+      "play_type": "contra-ataque",
+      "score_after": "2 a 1"
+    },
+    {
+      "team": "Brasil",
+      "opponent": "Espanha",
+      "scorer": "Rodrygo",
+      "number": 11,
+      "minute": 89,
+      "stage": "Quartas de Final",
+      "play_type": "chute de fora da área",
+      "score_after": "3 a 2"
+    }
+  ]
+}

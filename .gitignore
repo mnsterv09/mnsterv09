@@ -9,3 +9,5 @@ MoneyPrinterTurbo/
 *.wav
 *.mp3
 .streamlit/
+data/copa_videos/
+data/goals.json
